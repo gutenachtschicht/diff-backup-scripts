@@ -1,5 +1,5 @@
 @echo off
-REM (c) nachtschicht@kommespaeter.de 2021 under MIT license
+REM Copyright (c) 2021 nachtschicht@kommespaeter.de under MIT license portions under https://creativecommons.org/licenses/by-sa/3.0/
 REM a script for differential backups using robocopy and archive bits
 REM set backupsource and backuptarget before first use below
 
@@ -11,7 +11,7 @@ set backupsource=X:\test1
 set backuptarget=F:\test2
 
 REM whatever it does, it gets current date-time stamp independent from localization settings, you can replace with simpler code for localized  date retrieval
-REM probably first published on: https://stackoverflow.com/questions/3472631/how-do-i-get-the-day-month-and-year-from-a-windows-cmd-exe-script
+REM as published on: https://stackoverflow.com/a/33402280 
 for /F "skip=1 delims=" %%F in ('
     wmic PATH Win32_LocalTime GET Day^,Month^,Year /FORMAT:TABLE
 ') do (
