@@ -10,7 +10,7 @@ REM set backupsource and backuptarget before first use
 set backupsource=X:\test1
 set backuptarget=F:\test2
 
-REM whatever it does, it gets current date-time stamp independent from localization settings, you can replace with simpler code for localized  date retrieval
+REM whatever it does, it gets current date-time stamp independent from localization settings.
 REM as published on: https://stackoverflow.com/a/33402280 
 for /F "skip=1 delims=" %%F in ('
     wmic PATH Win32_LocalTime GET Day^,Month^,Year /FORMAT:TABLE
@@ -21,6 +21,8 @@ for /F "skip=1 delims=" %%F in ('
         set CurrYear=%%N
     )
 )
+REM You could replace with simpler code for localized date retrieval, especially if you don't like stackoverflow's licensing model - which I would understand ...
+REM something like 'set mydate=%date:~10,4%-%date:~4,2%-%date:~7,2%' based on US localization
 REM end of stackoverflow code
 REM add leading zero for one digit hours (known bug in DOS)
 set mytime=%time: =0%
