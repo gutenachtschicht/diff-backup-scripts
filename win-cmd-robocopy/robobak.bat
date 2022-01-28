@@ -5,10 +5,10 @@ REM robobak.bat v2-20220129
 REM a script for differential and full backups using robocopy, maintaining the date of directories, 
 REM also copying empty directories (see robocopy section for details and settings)
 REM
-REM (c) 2021 nachtschicht under the MIT license (see text at the end of file), portions under https://creativecommons.org/licenses/by-sa/3.0/ (see start of stackoverflow code)
+REM (c) 2021 nachtschicht under the MIT license (see text at the end of file :license), portions under https://creativecommons.org/licenses/by-sa/3.0/ (see start of stackoverflow code)
 IF "%~1" == "/license" GOTO :license
 
-REM go to help text
+REM go to help text, see at the end of file :displayhelp
 IF "%~1" == "?"  GOTO :displayhelp
 IF "%~1" == "/?" GOTO :displayhelp
 IF "%~1" == "/h" GOTO :displayhelp
@@ -17,11 +17,7 @@ IF "%~1" == "-h" GOTO :displayhelp
 REM better set a local scope for variables
 SETLOCAL 
 
-REM enter robobaksource and robobaktarget from console ... or call batch file with parameters (for simplicty of script order must be kept):  
-REM >robobak.bat [full|diff] [debug|nodebug] [targetpath] [soucepath]
-REM (when calling from batch you can leave the last entries empty, so that you can enter manually from the console)
-
-REM paramenter "full" does a one way full copy (not a mirror), parameter diff does a differential backup to the target folder with those files only that had the archive bit set, thereafter the archive bit is cleared
+REM get the parameters from batch job or console, see at the end of file :displayhelp
 IF "%~1" == "" (ECHO Backup mode, can be [diff] or [full]. & SET robobakmode=diff & SET /p robobakmode=robobakmode: ) ELSE (SET robobakmode=%~1)
 REM change debug mode debug or something else, "debug" does not copy anything (robocopy /L) and additional info is send to console for log
 IF "%~2" == "" (ECHO Debugmode, can be [debug] or else. & SET robobakdebug=debug & SET /p robobakdebug=robobakdebug: ) ELSE (SET robobakdebug=%~2)
@@ -193,9 +189,10 @@ GOTO :EOF
 
 :displayhelp
 ECHO.
-ECHO robobak.bat v1-20220129 
+ECHO robobak.bat v2-20220129 
 ECHO a script for differential and full backups using robocopy, maintaining the date of directories, 
 ECHO also copying empty directories (see robocopy command in batch file for details and settings)
+ECHO differential backup requries the archive bit set on creating and changing a file
 ECHO licensed under the MIT license, use parameter /license to see the license text
 ECHO.
 ECHO Usage:
