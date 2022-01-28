@@ -1,4 +1,10 @@
-A differential backup on file level makes sense if your data and work is stored in many little chunks.
+See instructions in the batch file:
 
-As soon as your backup includes a large blob file, e.g. a huge database file or an image that is changed with each access, this way of differential backup does not pay off, these files you should exclude and apply a different strategy!
+REM change debug mode true/false, debug true does not copy anything (robocopy /L) and additional info is send to console
+set debug=true
+
+REM set backupsource and backuptarget before first use
+set backupsource=X:\test1
+set backuptarget=F:\test2
+
 

@@ -1,0 +1,18 @@
+
+For help run
+>robobak.bat /?
+
+For license run
+>robobak.bat /license
+
+Usage
+>robobak.bat [full|diff] [debug|nodebug] [targetpath] [sourcepath] [backupname - optional or !]
+
+[full|diff]       full creates a full backup, diff creates a differential backup using the archive bit which will be deleted after copy
+[debug|nodebug]   debug will run robocopy with option /L, also no folders will be created, a logfile is written to the target folder
+[targetpath]      backups will go into targetpath, a folder and a logfile will be created in targetpath - do not use blanks
+[sourcepath]      sourcepath to the files and folders you want to have backed up - do not use blanks
+[backupname]      optional - if it is set, the backup folder and logfile will start with this name, 
+                  if not set or "!" is used, the last folder's name of sourcepath is used
+
+NOTE: targetpath has to be given first, before sourcepath!

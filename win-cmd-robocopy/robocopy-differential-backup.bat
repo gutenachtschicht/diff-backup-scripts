@@ -1,5 +1,5 @@
 @echo off
-REM Copyright (c) 2021 nachtschicht@kommespaeter.de under MIT license portions under https://creativecommons.org/licenses/by-sa/3.0/
+REM Copyright (c) 2021 nachtschicht 90715870+gutenachtschicht@users.noreply.github.com under MIT license, portions under https://creativecommons.org/licenses/by-sa/3.0/ (see start of stackoverflow code)
 REM a script for differential backups using robocopy and archive bits
 REM set backupsource and backuptarget before first use below
 
@@ -10,7 +10,9 @@ REM set backupsource and backuptarget before first use
 set backupsource=X:\test1
 set backuptarget=F:\test2
 
+REM start of stackoverflow code
 REM whatever it does, it gets current date-time stamp independent from localization settings.
+REM probably first published on: https://stackoverflow.com/questions/3472631/how-do-i-get-the-day-month-and-year-from-a-windows-cmd-exe-script
 REM as published on: https://stackoverflow.com/a/33402280 
 for /F "skip=1 delims=" %%F in ('
     wmic PATH Win32_LocalTime GET Day^,Month^,Year /FORMAT:TABLE
@@ -24,6 +26,7 @@ for /F "skip=1 delims=" %%F in ('
 REM You could replace with simpler code for localized date retrieval, especially if you don't like stackoverflow's licensing model - which I would understand ...
 REM something like 'set mydate=%date:~10,4%-%date:~4,2%-%date:~7,2%' based on US localization
 REM end of stackoverflow code
+
 REM add leading zero for one digit hours (known bug in DOS)
 set mytime=%time: =0%
 
